@@ -5,7 +5,9 @@ from src.etl.sql_runner import run_sql_file
 def build_all_marts():
     print("=== Building Analytical Data Marts ===")
     marts = [
-        ("Sales KPI Monthly Mart", "sql/marts/mart_sales_kpi_monthly.sql")
+        ("Sales KPI Monthly Mart", "sql/marts/mart_sales_kpi_monthly.sql"),
+        ("Macro Monthly Mart", "sql/marts/mart_macro_monthly.sql"),
+        ("Product Profitability Mart", "sql/marts/mart_product_profitability.sql"),
     ]
     
     for mart_title, sql_file in marts:

@@ -22,9 +22,9 @@ logs:
 shell:
 	docker compose exec analytics_runner bash
 
-# Ingest macroeconomic CSV files to staging
+# Fetch macroeconomic data from World Bank + FRED APIs to staging
 ingest-macro:
-	docker compose exec analytics_runner python src/ingestion/macro/run_macro_ingestion.py
+	docker compose exec analytics_runner python src/etl/run_prj2_macro.py
 
 # Extract OLTP database to Staging and load DWH core dimension/fact tables
 etl:

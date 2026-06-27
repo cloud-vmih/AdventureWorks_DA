@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS dwh.dim_customer (
     modified_date TIMESTAMP
 );
 
-TRUNCATE TABLE dwh.dim_customer RESTART IDENTITY;
+TRUNCATE TABLE dwh.dim_customer RESTART IDENTITY CASCADE;
 
 INSERT INTO dwh.dim_customer (customer_id, first_name, last_name, full_name, person_type, email_promotion, territory_id, modified_date)
 SELECT 
