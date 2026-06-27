@@ -1,0 +1,32 @@
+models:
+  revenue_forecast:
+    target: revenue
+    grain: territory_month
+    horizon: 3 # months
+    features:
+      - revenue_lag_1
+      - revenue_lag_2
+      - cpi
+      - interest_rate
+      - oil_price
+    parameters:
+      n_estimators: 100
+      max_depth: 6
+      learning_rate: 0.1
+    model_path: models/revenue_forecast/model.pkl
+
+  vip_churn:
+    target: churn_label
+    grain: customer_month
+    horizon: 6 # months
+    features:
+      - recency
+      - frequency
+      - monetary
+      - tenure
+      - avg_discount_rate
+    parameters:
+      n_estimators: 150
+      max_depth: 5
+      random_state: 42
+    model_path: models/vip_churn/model.pkl

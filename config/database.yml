@@ -1,0 +1,13 @@
+oltp:
+  host: OLTP_DB_HOST
+  port: OLTP_DB_PORT
+  user: OLTP_DB_USER
+  password: OLTP_DB_PASSWORD
+  database: OLTP_DB_NAME
+
+dwh:
+  host: DWH_DB_HOST
+  port: DWH_DB_PORT
+  user: DWH_DB_USER
+  password: DWH_DB_PASSWORD
+  database: DWH_DB_NAME

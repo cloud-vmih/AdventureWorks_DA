@@ -1,0 +1,24 @@
+macro_sources:
+  cpi:
+    file_path: data/macro/raw/cpi.csv
+    columns:
+      - date
+      - country_code
+      - cpi
+  interest_rate:
+    file_path: data/macro/raw/interest_rate.csv
+    columns:
+      - date
+      - country_code
+      - interest_rate
+  oil_price:
+    file_path: data/macro/raw/oil_price.csv
+    columns:
+      - date
+      - oil_price
+  exchange_rate:
+    file_path: data/macro/raw/exchange_rate.csv
+    columns:
+      - date
+      - country_code
+      - exchange_rate

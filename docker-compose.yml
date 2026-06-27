@@ -1,0 +1,83 @@
+services:
+  postgres_oltp:
+    build:
+      context: ./docker/postgres_oltp
+      dockerfile: Dockerfile
+    container_name: adventureworks-oltp
+    environment:
+      POSTGRES_USER: ${OLTP_DB_USER}
+      POSTGRES_PASSWORD: ${OLTP_DB_PASSWORD}
+      POSTGRES_DB: postgres
+    ports:
+      - "${OLTP_HOST_PORT}:5432"
+    volumes:
+      - oltp_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  postgres_dwh:
+    image: postgres:16
+    container_name: adventureworks-dwh
+    environment:
+      POSTGRES_USER: ${DWH_DB_USER}
+      POSTGRES_PASSWORD: ${DWH_DB_PASSWORD}
+      POSTGRES_DB: ${DWH_DB_NAME}
+    ports:
+      - "${DWH_HOST_PORT}:5432"
+    volumes:
+      - dwh_data:/var/lib/postgresql/data
+      - ./sql/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d ${DWH_DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  superset:
+    image: apache/superset:latest
+    container_name: adventureworks-superset
+    user: "root"
+    ports:
+      - "${SUPERSET_PORT}:8088"
+    environment:
+      - SUPERSET_SECRET_KEY=adventureworks_secret_key_12345
+    volumes:
+      - ./docker/superset/superset_init.sh:/app/superset_init.sh
+      - superset_home:/app/superset_home
+    entrypoint: /app/superset_init.sh
+    depends_on:
+      postgres_dwh:
+        condition: service_healthy
+
+  analytics_runner:
+    build:
+      context: ./docker/analytics
+      dockerfile: Dockerfile
+    container_name: adventureworks-analytics
+    volumes:
+      - .:/app
+    environment:
+      - OLTP_DB_HOST=postgres_oltp
+      - OLTP_DB_PORT=5432
+      - OLTP_DB_USER=${OLTP_DB_USER}
+      - OLTP_DB_PASSWORD=${OLTP_DB_PASSWORD}
+      - OLTP_DB_NAME=${OLTP_DB_NAME}
+      - DWH_DB_HOST=postgres_dwh
+      - DWH_DB_PORT=5432
+      - DWH_DB_USER=${DWH_DB_USER}
+      - DWH_DB_PASSWORD=${DWH_DB_PASSWORD}
+      - DWH_DB_NAME=${DWH_DB_NAME}
+      - PYTHONPATH=/app
+    depends_on:
+      postgres_oltp:
+        condition: service_healthy
+      postgres_dwh:
+        condition: service_healthy
+
+volumes:
+  oltp_data:
+  dwh_data:
+  superset_home:

@@ -1,0 +1,32 @@
+# Environment secrets (DO NOT COMMIT)
+.env
+
+# Python Caches & Virtualenvs
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+venv/
+.venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project Analytics Outputs
+logs/
+models/
+AdventureWorks-for-Postgres/
+
+# Database local storage or caches (if any)
+*.db
+*.sqlite
+superset/exports/*.zip

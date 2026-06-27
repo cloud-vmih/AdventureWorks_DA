@@ -1,0 +1,13 @@
+pandas==2.2.1
+numpy==1.26.4
+scikit-learn==1.4.1.post1
+xgboost==2.0.3
+sqlalchemy==2.0.28
+psycopg2-binary==2.9.9
+pyyaml==6.0.1
+ipykernel==6.29.3
+jupyterlab==4.1.4
+mlxtend==0.23.1
+statsmodels==0.14.1
+matplotlib==3.8.3
+plotly==5.19.0
