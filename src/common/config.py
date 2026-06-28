@@ -1,7 +1,12 @@
 import os
 import yaml
 
+# Find the project root directory (two levels up from src/common/)
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 def load_yaml(file_path):
+    if not os.path.isabs(file_path):
+        file_path = os.path.join(PROJECT_ROOT, file_path)
     with open(file_path, 'r') as f:
         return yaml.safe_load(f)
 
