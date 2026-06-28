@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS dwh.dim_product (
     modified_date TIMESTAMP
 );
 
-TRUNCATE TABLE dwh.dim_product RESTART IDENTITY;
+TRUNCATE TABLE dwh.dim_product RESTART IDENTITY CASCADE;
 
 INSERT INTO dwh.dim_product (product_id, product_name, product_number, color, standard_cost, list_price, size, weight, subcategory_name, category_name, modified_date)
 SELECT 

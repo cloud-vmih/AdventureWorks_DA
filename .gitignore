@@ -30,3 +30,5 @@ AdventureWorks-for-Postgres/
 *.db
 *.sqlite
 superset/exports/*.zip
+
+.opencode/
