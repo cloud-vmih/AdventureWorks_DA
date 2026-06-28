@@ -32,3 +32,4 @@ AdventureWorks-for-Postgres/
 superset/exports/*.zip
 
 .opencode/
+.Trash-0/
