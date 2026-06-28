@@ -1,6 +1,6 @@
 -- Data Mart Macro Monthly script
 CREATE TABLE IF NOT EXISTS mart.mart_macro_monthly (
-    month_key VARCHAR(8),
+    month_key VARCHAR(6),
     territory_id INT,
     country_code VARCHAR(3),
     gdp NUMERIC,
