@@ -1,6 +1,6 @@
 # Makefile for orchestrating the AdventureWorks Data Analytics pipeline
 
-.PHONY: up down build logs shell ingest-macro etl build-marts quality-check train-all run-all
+.PHONY: up down build logs shell notebook ingest-macro etl build-marts quality-check train-all run-all
 
 # Start all Docker containers
 up:
@@ -21,6 +21,10 @@ logs:
 # Open shell inside python analytics container
 shell:
 	docker compose exec analytics_runner bash
+
+# Run Jupyter Lab server inside python analytics container
+notebook:
+	docker compose exec analytics_runner jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root
 
 # Ingest macroeconomic CSV files to staging
 ingest-macro:

@@ -57,6 +57,8 @@ services:
       context: ./docker/analytics
       dockerfile: Dockerfile
     container_name: adventureworks-analytics
+    ports:
+      - "8888:8888"
     volumes:
       - .:/app
     environment:
