@@ -59,6 +59,7 @@ services:
     container_name: adventureworks-analytics
     ports:
       - "8888:8888"
+      - "8501:8501"
     volumes:
       - .:/app
     environment:

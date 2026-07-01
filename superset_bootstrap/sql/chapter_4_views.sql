@@ -1,0 +1,1 @@
+-- Chapter 4 analytical tables write directly to DWH tables, no custom database views required.
