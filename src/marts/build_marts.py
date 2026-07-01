@@ -8,6 +8,8 @@ def build_all_marts():
         ("Sales KPI Monthly Mart", "sql/marts/mart_sales_kpi_monthly.sql"),
         ("Macro Monthly Mart", "sql/marts/mart_macro_monthly.sql"),
         ("Product Profitability Mart", "sql/marts/mart_product_profitability.sql"),
+        ("Product Profitability Monthly Mart", "sql/marts/mart_product_profitability_monthly.sql"),
+        ("Inventory Risk Mart", "sql/marts/mart_inventory_risk.sql"),
         ("Territory Macro Monthly Mart", "sql/marts/mart_territory_macro_monthly.sql"),
         ("Category Share Monthly Mart", "sql/marts/mart_category_share_monthly.sql"),
     ]
