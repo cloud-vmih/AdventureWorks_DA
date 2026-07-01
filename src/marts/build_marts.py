@@ -10,6 +10,8 @@ def build_all_marts():
         ("Product Profitability Mart", "sql/marts/mart_product_profitability.sql"),
         ("Product Profitability Monthly Mart", "sql/marts/mart_product_profitability_monthly.sql"),
         ("Inventory Risk Mart", "sql/marts/mart_inventory_risk.sql"),
+        ("Territory Macro Monthly Mart", "sql/marts/mart_territory_macro_monthly.sql"),
+        ("Category Share Monthly Mart", "sql/marts/mart_category_share_monthly.sql"),
     ]
     
     for mart_title, sql_file in marts:
